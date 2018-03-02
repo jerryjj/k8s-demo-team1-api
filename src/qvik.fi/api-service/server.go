@@ -16,7 +16,7 @@ type PSPStatus struct {
 	Message string `json:"message,omitempty"`
 }
 
-// Gets PSP status from Payments service
+// GetPaymentsStatus - Gets PSP status from Payments service
 func GetPaymentsStatus(w http.ResponseWriter, r *http.Request) {
 	log.Debugf("GetPaymentsStatus")
 

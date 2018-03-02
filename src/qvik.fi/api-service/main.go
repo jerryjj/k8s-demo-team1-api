@@ -6,7 +6,7 @@ import (
 	logging "github.com/op/go-logging"
 )
 
-// Initializes our local logger
+// SetupLocalLogger initializes our local logger
 func SetupLocalLogger(logModule string) *logging.Logger {
 	var format = logging.MustStringFormatter("%{color}%{time:15:04:05.000} " +
 		"%{shortfunc} ▶ %{level} " +
@@ -26,16 +26,16 @@ func SetupLocalLogger(logModule string) *logging.Logger {
 	return log
 }
 
-// Reads an environment variable value or panics if not found
-func MustGetenv(varname string, default_value string) string {
+// MustGetenv reads an environment variable value or panics if not found
+func MustGetenv(varname string, defaultValue string) string {
 	log.Debugf("Reading environment variable %v", varname)
 
 	value := os.Getenv(varname)
 	if value == "" {
-		if default_value == "" {
+		if defaultValue == "" {
 			log.Fatalf("Missing env variable %v", varname)
 		}
-		value = default_value
+		value = defaultValue
 	}
 
 	return value
